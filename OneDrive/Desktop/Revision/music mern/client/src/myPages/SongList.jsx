@@ -1,4 +1,7 @@
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -78,6 +81,37 @@ const Hr = styled.hr`
 
 
 const SongsList = () => {
+
+  const location = useLocation()
+
+  const id = location.pathname.split("/")[2]
+
+  // console.log("patthh:", id)
+
+const [songs, setSongs] = useState([])
+
+ useEffect(()=>{
+
+  const getSongs = async() =>{
+
+    
+
+    
+
+  const res = await axios.get(`http://localhost:2345/albums/${id}`)
+
+  // console.log("responsee:", res)
+
+  setSongs(res.data)
+
+  }
+
+  getSongs()
+
+
+ },[])
+
+
   
   return (
     <Container>
@@ -90,7 +124,7 @@ const SongsList = () => {
         
         <Bottom>
           <Info>
-            {popularProducts.map((item) => (
+            {songs.map((item) => (
 
            
            
@@ -99,7 +133,7 @@ const SongsList = () => {
                   <Image src= {item.img} />
                   <Details>
                     <ProductName>
-                      <b>Song:</b> {item.songs}
+                      <b>Song:</b> {item}
                     </ProductName>
                    
                   </Details>

@@ -106,13 +106,13 @@ router.get("/find/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
 
-    const qNew = req.query.new;
+    
 
     let query = Album.find()
 
     const page = parseInt(req.query.page) || 1
 
-    const pageSize = parseInt(req.query.limit) || 2
+    const pageSize = parseInt(req.query.limit) || 5
 
     // console.log("pagesize:",pageSize)
     const skip = (page - 1) * pageSize
@@ -125,6 +125,12 @@ router.get("/", async (req, res) => {
     const qCategory = req.query.genre
 
 
+
+    // console.log("q category:", qCategory)
+
+   
+
+
     try {
 
         var albums;
@@ -133,16 +139,28 @@ router.get("/", async (req, res) => {
 
         //     albums = await Album.find().sort({ createdAt: -1 }).limit(2)
 
+        // if(page){
+
+        //     // console.log("page:", page)
+        //     albums = await Album.find()
+        // }
+
 
         if (qCategory) {
+           
 
+            console.log("qcategory:" ,qCategory)
 
             albums = await Album.find({
 
                 genre: { $eq: qCategory }
+               
+
 
             }).skip(skip).limit(pageSize)
 
+            console.log("data:", albums)
+           
         } else {
 
             albums = await Album.find().skip(skip).limit(pageSize)
@@ -167,6 +185,30 @@ router.get("/", async (req, res) => {
 
     }
 })
+
+//get songs
+
+router.get("/:id", async (req, res) => {
+
+    try {
+
+        const album = await Album.findById(req.params.id)
+
+        res.status(200).json(album.songs)
+
+
+    }
+    catch (error) {
+
+        res.status(500).json(error)
+
+
+    }
+
+
+})
+
+
 
 
 

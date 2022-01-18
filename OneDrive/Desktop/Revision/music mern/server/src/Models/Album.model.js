@@ -10,7 +10,9 @@ const albumSchema = new mongoose.Schema(
         genre: {type: String, required: true},
         year: {type: String, required: true},
         image: {type: String, required: true},
-        songs: {type: Array, required: true}
+        songs: {type: Array, required: true},
+        artist:{type: String},
+        artist_image: {type: String}
     },
     
     {timestamps: true}

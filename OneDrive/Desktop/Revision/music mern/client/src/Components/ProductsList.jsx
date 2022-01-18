@@ -26,7 +26,7 @@ cursor: pointer;
 const Container = styled.div`
 display: flex;
 min-width: 300px;
-height: 400px;
+height: 350px;
 position: relative;
 align-items: center;
 justify-content: center;
@@ -112,13 +112,18 @@ export const ProductsList = ({item}) => {
            <IconContainer>
                
                <Icon>
-                
+               <Link to = {`/songs/${item._id}`} >
                   <Button>+</Button> 
+
+                  </Link>
                  
                  
                   
                </Icon>
+               
                <Title>{item.title} {item.year}</Title>
+
+               
                
                
                </IconContainer>

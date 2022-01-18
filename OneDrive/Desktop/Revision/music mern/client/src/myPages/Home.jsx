@@ -11,7 +11,7 @@ import Pagination from '../Components/Pagination'
 export const Home = () => {
     return (
         <div>
-        <Pagination />
+      
             <Navbar />
             <Slider/>
 
@@ -21,7 +21,7 @@ export const Home = () => {
            
             {/* <Footer /> */}
 
-            <Pagination />
+            {/* <Pagination /> */}
 
         </div>
     )

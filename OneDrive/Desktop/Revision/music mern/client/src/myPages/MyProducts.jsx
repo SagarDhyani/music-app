@@ -63,9 +63,11 @@ export const MyProducts = () => {
 
     const handleFilters = (e) => {
 
-        console.log("value:", e.target.value)
+        
 
         const value = e.target.value.toLowerCase()
+
+        console.log("value:", e.target.value)
 
         setFilters({
             ...filter,
@@ -74,7 +76,7 @@ export const MyProducts = () => {
         
     }
 
-    console.log("filter:", filter)
+    // console.log("filter:", filter)
     // console.log("location:", cat)
     return (
         <Container>
@@ -84,10 +86,12 @@ export const MyProducts = () => {
                 <Filter>filter by:</Filter>
                 <Select name = "genre" onChange={handleFilters}>
                     <Option defaultValue>Genre</Option>
-                    <Option value ="Ghazals">Ghazals</Option>
-                    <Option value ="Sufi">Sufi</Option>
-                    <Option value ="Punjabi">Punjabi</Option>
-                    <Option value ="Hindi">Hindi</Option>
+                    
+                    <Option value ="ghazals">Ghazals</Option>
+                    <Option value ="sufi">Sufi</Option>
+                    <Option value ="punjabi">Punjabi</Option>
+                    <Option value ="romantic">Romantic</Option>
+                    {/* <Option value ="Hindi">Hindi</Option> */}
                 </Select>
 
                 <Filter>Sort By year:</Filter>

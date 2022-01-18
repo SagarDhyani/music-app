@@ -28,18 +28,23 @@ function App() {
       
 
       <Switch>
+        <Route exact path="/page/:pageNumber">
+        <Home/>
+
+        </Route>
+
         <Route exact path="/">
         <Home/>
 
         </Route>
-        <Route path="/:genre">
+        <Route path="albums/:genre">
         <MyProducts/>
           </Route>
         {/* <Route path="/albums/:category">
         <MyProducts/>
         </Route> */}
       
-        <Route path="/songs:id">
+        <Route path="/songs/:id">
           <SongsList />
         </Route>
         
