@@ -57,7 +57,7 @@ export const Product = ({ cat, filter, sort }) => {
 
 
                 let res = await axios.get(filter.genre ? `http://localhost:2345/albums?genre=${filter.genre}&page=${page}` :
-                    page ? `http://localhost:2345/albums?genre=${page}&page=${filter.genre}` : `http://localhost:2345/albums?page=${page}`)
+                     `http://localhost:2345/albums?page=${page}`)
 
 
                 // console.log("responseeeeee:",res)
@@ -66,7 +66,9 @@ export const Product = ({ cat, filter, sort }) => {
 
                 setPages(data.pages)
 
-                setAlbums(res.data.data)
+               setFilteredAlbums(res.data.data)
+
+                // setAlbums(res.data.data)
                 setLoading(false)
 
 
